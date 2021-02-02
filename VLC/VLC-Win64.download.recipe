@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Downloads the latest version Stellarium.</string>
+    <string>Downloads the latest version of VLC 64bit for Windows.</string>
     <key>Identifier</key>
-    <string>com.github.hansen-m.download.Stellarium</string>
+    <string>com.github.hansen-m.download.VLC-Win64</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Stellarium</string>
+        <string>VLC-win64</string>
         <key>SEARCH_URL</key>
-        <string>https://stellarium.org</string>
+        <string>https://www.videolan.org/vlc/download-windows.html</string>
         <key>SEARCH_PATTERN</key>
-        <string>(?P&lt;url&gt;https://github.com.*(?P&lt;version&gt;[0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}).zip)</string>
+        <string><![CDATA[(?P<url>get\.videolan\.org\/vlc\/(?P<version>[0-9.]+)\/win64\/vlc-[0-9.]+-win64\.exe)]]></string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.9</string>
@@ -36,24 +36,9 @@
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>%url%</string>
+                <string>https://%url%</string>
                 <key>filename</key>
-                <string>%NAME%.zip</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>Unarchiver</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>CodeSignatureVerifier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app</string>
-                <key>requirement</key>
-                <string>identifier "org.stellarium.Stellarium" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "3WW8XR23DF"</string>
+                <string>%NAME%.exe</string>
             </dict>
         </dict>
         <dict>
